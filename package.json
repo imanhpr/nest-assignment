@@ -12,6 +12,7 @@
   "author": "Iman Hosseini Pour",
   "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
   "devDependencies": {
+    "@mikro-orm/sqlite": "^6.1.6",
     "@nestjs/cli": "^10.3.2",
     "@swc/core": "^1.4.2",
     "@types/node": "20.11",
