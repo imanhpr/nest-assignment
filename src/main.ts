@@ -9,11 +9,15 @@ import AppModule from "./app.module.js";
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter()
+    new FastifyAdapter({ logger: true })
   );
 
   app.useGlobalPipes(
-    new ValidationPipe({ whitelist: true, forbidUnknownValues: true })
+    new ValidationPipe({
+      whitelist: true,
+      forbidUnknownValues: true,
+      forbidNonWhitelisted: true,
+    })
   );
   await app.listen(3000);
 }
