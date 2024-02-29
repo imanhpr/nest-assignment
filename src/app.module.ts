@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MikroOrmModule } from "@mikro-orm/nestjs";
 import { PostgreSqlDriver } from "@mikro-orm/postgresql";
 import { IEnvironmentVariables } from "./types/index.js";
+import { WalletModule } from "./wallet/wallet.module.js";
 
 const MikroOrmQueryLogger: ValueProvider = {
   provide: "MikroOrmQueryLogger",
@@ -12,6 +13,7 @@ const MikroOrmQueryLogger: ValueProvider = {
 @Module({
   imports: [
     AuthModule,
+    WalletModule,
     ConfigModule.forRoot({ cache: true, isGlobal: true }),
     MikroOrmModule.forRootAsync({
       providers: [MikroOrmQueryLogger],
@@ -32,7 +34,7 @@ const MikroOrmQueryLogger: ValueProvider = {
           driver: PostgreSqlDriver,
           clientUrl,
           debug: true,
-          ensureDatabase: { forceCheck: true, create: true, clear: true },
+          ensureDatabase: { forceCheck: true, create: true },
           forceUtcTimezone: true,
           logger: (msg) => logger.debug(msg),
         };
