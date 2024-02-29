@@ -24,7 +24,12 @@ export class WalletService {
   async transactionList(userId: number) {
     const lst = this.transactionRepo.find(
       { user: userId },
-      { limit: 10, orderBy: [{ id: "DESC" }] }
+      {
+        limit: 10,
+        orderBy: [{ id: "DESC" }],
+        populate: ["user"],
+        fields: ["user.id", "user.email", "id", "amount", "createdAt"],
+      }
     );
     return lst;
   }
@@ -52,15 +57,15 @@ export class WalletService {
         .first<{ total: string | null }>();
       em.persist(user);
       if (total === null) {
-        user.currentBalance = transaction.amount;
+        user.current_balance = transaction.amount;
       } else {
-        user.currentBalance = new Decimal(total).add(transaction.amount);
+        user.current_balance = new Decimal(total).add(transaction.amount);
       }
       await em.flush();
       return {
         id: user.id,
         email: user.email,
-        balance: user.currentBalance.toFixed(2),
+        balance: user.current_balance.toFixed(2),
       };
     });
   }
