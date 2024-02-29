@@ -35,7 +35,14 @@ export default class AuthService {
     const hashedPassword = await this.passwordService.generatePassword(
       password
     );
-    const user = this.em.create(User, { password: hashedPassword, email });
+    const user = this.em.create(
+      User,
+      {
+        password: hashedPassword,
+        email,
+      },
+      { partial: true }
+    );
 
     try {
       await this.em.persistAndFlush(user);
