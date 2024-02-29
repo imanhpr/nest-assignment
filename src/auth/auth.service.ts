@@ -50,7 +50,9 @@ export default class AuthService {
     return { success: true };
   }
 
-  async login({ password, email }: UserDTO) {
+  async login({ password, email }: UserDTO): Promise<{
+    accessToken: string;
+  }> {
     const user = await this.em.findOne(User, { email });
     if (user === null) throw new BadRequestException(this.errorCode101);
 
