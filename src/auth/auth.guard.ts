@@ -10,6 +10,8 @@ import { FastifyRequest } from "fastify";
 import { validateOrReject } from "class-validator";
 import { plainToInstance } from "class-transformer";
 import { UserTokenPayload } from "./DTO/User.DTO.js";
+import { EntityManager } from "@mikro-orm/core";
+import User from "../models/User.model.js";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -22,7 +24,10 @@ export class AuthGuard implements CanActivate {
     msg: "Token is invalid or expired. please get a new access token and try again",
   };
   private readonly logger = new Logger(AuthGuard.name);
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly em: EntityManager
+  ) {}
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const http = context.switchToHttp();
     const req = http.getRequest<FastifyRequest>();
@@ -42,7 +47,13 @@ export class AuthGuard implements CanActivate {
       const res = plainToInstance(UserTokenPayload, tokenObj);
 
       await validateOrReject(res, { whitelist: true });
-      req.user = res;
+      const user = await this.em.findOne(
+        User,
+        { id: res.id },
+        { exclude: ["password"] }
+      );
+      if (user === null) return false;
+      req.user = user;
       return true;
     } catch (err) {
       this.logger.warn(err);
@@ -53,6 +64,6 @@ export class AuthGuard implements CanActivate {
 
 declare module "fastify" {
   interface FastifyRequest {
-    user?: UserTokenPayload;
+    user?: Omit<User, "password">;
   }
 }
