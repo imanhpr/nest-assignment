@@ -39,7 +39,7 @@ export class WalletService {
       const transaction = em.create(
         Transaction,
         {
-          amount: balance.trunc(),
+          amount: balance,
           user: user,
         },
         { partial: true, persist: true }
