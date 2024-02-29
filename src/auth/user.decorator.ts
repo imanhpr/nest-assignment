@@ -1,10 +1,17 @@
-import { createParamDecorator, ExecutionContext } from "@nestjs/common";
+import {
+  createParamDecorator,
+  ExecutionContext,
+  ForbiddenException,
+} from "@nestjs/common";
 import { FastifyRequest } from "fastify";
+import User from "../models/User.model.js";
 
-export const User = createParamDecorator(
-  (_: unknown, ctx: ExecutionContext) => {
-    const request = ctx.switchToHttp().getRequest<FastifyRequest>();
-    // TODO: Add validation logic here if user does not exists
-    return request.user;
-  }
-);
+export const GetUser = createParamDecorator<
+  unknown,
+  ExecutionContext,
+  Omit<User, "password">
+>((_, ctx) => {
+  const request = ctx.switchToHttp().getRequest<FastifyRequest>();
+  if (request.user) return request.user;
+  throw new ForbiddenException();
+});
