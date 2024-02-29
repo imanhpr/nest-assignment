@@ -1,7 +1,7 @@
 import {
   EntityManager,
   UniqueConstraintViolationException,
-} from "@mikro-orm/postgresql";
+} from "@mikro-orm/core";
 import { Injectable, InternalServerErrorException } from "@nestjs/common";
 import { UserDTO } from "./DTO/User.DTO.js";
 import User from "../models/User.model.js";
