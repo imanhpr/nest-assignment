@@ -24,11 +24,13 @@
     "@nestjs/common": "^10.3.3",
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^10.3.3",
+    "@nestjs/jwt": "^10.2.0",
     "@nestjs/mapped-types": "^2.0.5",
     "@nestjs/platform-fastify": "^10.3.3",
     "@nestjs/testing": "^10.3.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
-    "fastify": "^4.26.1"
+    "fastify": "^4.26.1",
+    "rxjs": "^7.8.1"
   }
 }
