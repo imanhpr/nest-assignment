@@ -34,6 +34,7 @@
     "@nestjs/testing": "^10.3.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "decimal.js": "^10.4.3",
     "fastify": "^4.26.1",
     "rxjs": "^7.8.1"
   }
