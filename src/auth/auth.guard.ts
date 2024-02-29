@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     msg: "Authorziton Header is empty or is invliad. please send a valid Bearer token",
   };
   private readonly errorCode103 = {
-    code: 102,
+    code: 103,
     msg: "Token is invalid or expired. please get a new access token and try again",
   };
   private readonly logger = new Logger(AuthGuard.name);
