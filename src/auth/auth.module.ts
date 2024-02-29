@@ -22,5 +22,6 @@ import { IEnvironmentVariables } from "../types/index.js";
   ],
   controllers: [AuthController],
   providers: [AuthService, AuthGuard],
+  exports: [AuthGuard, JwtModule],
 })
 export class AuthModule {}
