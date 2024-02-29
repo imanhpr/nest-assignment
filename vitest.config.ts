@@ -4,7 +4,11 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     globals: true,
-    root: "./src",
+    root: "./",
+    coverage: {
+      provider: "istanbul",
+      reporter: "html",
+    },
   },
   plugins: [
     swc.vite({
