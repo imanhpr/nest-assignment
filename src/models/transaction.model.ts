@@ -22,9 +22,9 @@ export default class Transaction {
   })
   amount!: Decimal;
 
-  @Property({ nullable: false, default: sql.now() })
+  @Property({ nullable: false, default: sql.now(), fieldName: "created_at" })
   createdAt!: Date;
 
-  @ManyToOne(() => User, { ref: true })
+  @ManyToOne(() => User, { ref: true, fieldName: "user_id" })
   user!: Ref<User>;
 }

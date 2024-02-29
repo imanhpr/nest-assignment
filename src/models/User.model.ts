@@ -26,6 +26,7 @@ export default class User {
     nullable: false,
     columnType: "NUMERIC(6,2)",
     type: () => Decimal,
+    fieldName: "current_balance",
   })
-  currentBalance: Decimal = new Decimal(0);
+  current_balance: Decimal = new Decimal(0);
 }
