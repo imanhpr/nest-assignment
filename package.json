@@ -6,7 +6,7 @@
   },
   "type": "module",
   "scripts": {
-    "start:dev": "nest start -w",
+    "start:dev": "nest start -w -b swc",
     "build": "nest build -b swc"
   },
   "author": "Iman Hosseini Pour",
