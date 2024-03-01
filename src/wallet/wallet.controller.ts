@@ -18,7 +18,7 @@ export class WalletController {
 
   @Get()
   walletInfo(@GetUser() user: Omit<User, "password">) {
-    return this.walletService.transactionList(user.id);
+    return user;
   }
 
   @Post()
