@@ -1,0 +1,151 @@
+[
+  {
+    "folders": [
+      {
+        "headers": [],
+        "requests": [
+          {
+            "preRequestScript": "",
+            "headers": [],
+            "name": "transaction list",
+            "auth": {
+              "token": "<<TOKEN>>",
+              "authType": "bearer",
+              "authActive": true
+            },
+            "params": [],
+            "testScript": "",
+            "v": "1",
+            "method": "GET",
+            "endpoint": "http://localhost:3000/wallet/list",
+            "body": {
+              "contentType": null,
+              "body": null
+            }
+          },
+          {
+            "name": "wallet info",
+            "testScript": "",
+            "preRequestScript": "",
+            "v": "1",
+            "method": "GET",
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "headers": [],
+            "params": [],
+            "auth": {
+              "token": "<<TOKEN>>",
+              "authActive": true,
+              "authType": "bearer"
+            },
+            "endpoint": "http://localhost:3000/wallet"
+          },
+          {
+            "v": "1",
+            "endpoint": "http://localhost:3000/wallet",
+            "name": "create transaction",
+            "params": [],
+            "headers": [],
+            "method": "POST",
+            "auth": {
+              "authType": "bearer",
+              "authActive": true,
+              "token": "<<TOKEN>>"
+            },
+            "preRequestScript": "",
+            "testScript": "",
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"amount\" :\"3.3231445\"\n}"
+            }
+          }
+        ],
+        "name": "wallet",
+        "v": 2,
+        "auth": {
+          "authActive": true,
+          "authType": "inherit"
+        },
+        "folders": []
+      },
+      {
+        "name": "currency",
+        "folders": [],
+        "requests": [
+          {
+            "v": "1",
+            "auth": {
+              "authActive": true,
+              "token": "<<TOKEN>>",
+              "authType": "bearer"
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "preRequestScript": "",
+            "method": "POST",
+            "endpoint": "http://localhost:3000/currency",
+            "params": [],
+            "headers": [],
+            "name": "insert new price",
+            "testScript": ""
+          }
+        ],
+        "auth": {
+          "authActive": true,
+          "authType": "inherit"
+        },
+        "headers": [],
+        "v": 2
+      }
+    ],
+    "name": "nest-assignment",
+    "auth": {
+      "authActive": true,
+      "authType": "none"
+    },
+    "headers": [],
+    "requests": [
+      {
+        "headers": [],
+        "params": [],
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"email\" :\"imanhpr1999@gmail.com\",\n  \"password\" :\"testpass\"\n}"
+        },
+        "auth": {
+          "authActive": true,
+          "authType": "inherit"
+        },
+        "testScript": "",
+        "endpoint": "http://localhost:3000/auth/login",
+        "name": "login",
+        "preRequestScript": "",
+        "v": "1",
+        "method": "POST"
+      },
+      {
+        "params": [],
+        "preRequestScript": "",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": [],
+        "v": "1",
+        "testScript": "",
+        "name": "create new account",
+        "endpoint": "http://localhost:3000/auth/register",
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n  \"email\" :\"imanhpr1999@gmail.com\",\n  \"password\" : \"testpass\"\n}"
+        },
+        "method": "POST"
+      }
+    ],
+    "v": 2
+  }
+]
