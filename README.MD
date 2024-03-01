@@ -1,4 +1,4 @@
-# NestJS Code Assignment
+# NestJS ![nestjs32x32](https://github.com/imanhpr/nest-assignment/assets/56130647/facef099-7c17-4d9c-ae36-84265b05e31a) Code Assignment
 This project is meant to be used as a code assignment which was given to me for a job interview.
 
 ## How To Run The Project ?
@@ -38,3 +38,30 @@ services:
       JWT_SECRET_KEY: <SECRET_KEY>
 
 ```
+## HTTP API Endpoints document
+In the root of project there is ```hopp-http-collection.json``` file. import this file into [hoppscotch](https://hoppscotch.io/)
+
+## Helper Scripts
+- ```pnpm build``` : It builds project and generates transpiled .js files.
+- ```pnpm start:dev``` : It starts development server
+- ```pnpm test``` : It runs unit tests.
+- ```pnpm test:coverage``` : It runs the tests and then generate ```html``` coverage file.
+- ```pnpm test:watch``` : It runs test in watch mode.
+
+## Project Features
+- It uses [Fastify](https://fastify.dev/) ![fastify16x16](https://github.com/imanhpr/nest-assignment/assets/56130647/3213f226-085c-4963-88cb-58f43649a626)
+ as the webserver to achieve blazing-fast speed 🔥.
+- It uses [SWC](https://swc.rs/) 🦀 compiler for faster build time during development and CI/CD pipelines.
+- It uses [Vitest](https://vitest.dev/) 🧪 as the main test runner to have great fetureas like test graph. checkout ```pnpm vitest --ui```
+- It uses [pnpm](https://pnpm.io/) 📦 as the package manager to save extra disk space to save a little bit money 💸.
+- It uses [Mikro-ORM](https://mikro-orm.io/) with different patterns like **DataMapper** to showcase mikro-orm capabilities 💪
+
+## The Things We Can Improve
+- Useing [**DAO (Data Access Object) Pattern**](https://www.digitalocean.com/community/tutorials/dao-design-pattern) to eliminate depndecy between **ORM** And **Business Logics**
+- Adding more integration and unit tests. One of the project modules doesn't have any tests at all.
+  - Test Coverage :
+    - UtilModule - 100% - ✅
+    - AuthModule - 80% - ✅
+    - CurrencyModule 70% - ⚠️
+    - WalletModule - No Test - ❌
+- Adding End2End testing pipeline to the project.
