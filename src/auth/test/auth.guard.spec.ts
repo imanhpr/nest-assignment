@@ -3,11 +3,14 @@ import { describe, it, expect, test, vi, beforeAll } from "vitest";
 import { AuthGuard } from "../auth.guard.js";
 import { JwtModule, JwtService } from "@nestjs/jwt";
 import { ExecutionContext, ForbiddenException } from "@nestjs/common";
+import { MikroOrmModule } from "@mikro-orm/nestjs";
+import { SqlEntityManager, SqliteDriver } from "@mikro-orm/sqlite";
+import User from "../../models/User.model.js";
 
-const FAKE_VALID_USER_PAYLOAD: Readonly<any> = Object.freeze({
+const FAKE_VALID_USER_PAYLOAD: Readonly<Partial<User>> = Object.freeze({
   id: 1,
 });
-const FAKE_EXPIRED_USER_PAYLOAD: Readonly<any> = Object.freeze({
+const FAKE_EXPIRED_USER_PAYLOAD: Readonly<Partial<User>> = Object.freeze({
   id: 2,
 });
 describe.only("AuthGuard", () => {
@@ -25,10 +28,29 @@ describe.only("AuthGuard", () => {
           secret: "fake_secret_for_test",
           signOptions: { expiresIn: "30m" },
         }),
+        MikroOrmModule.forRoot({
+          allowGlobalContext: true,
+          driver: SqliteDriver,
+          dbName: ":memory:",
+          ensureDatabase: { create: true },
+          entities: [User],
+        }),
       ],
       providers: [AuthGuard],
     }).compile();
     const jwtService = module.get(JwtService);
+    const em = module.get(SqlEntityManager);
+    em.create(
+      User,
+      { id: 1, email: "validmail@gmail.com", password: "testpass" },
+      { partial: true, persist: true }
+    );
+    em.create(
+      User,
+      { id: 2, email: "validmail2@gmail.com", password: "testpass" },
+      { partial: true, persist: true }
+    );
+    await em.flush();
     guard = module.get(AuthGuard);
     token = "Bearer " + jwtService.sign(FAKE_VALID_USER_PAYLOAD);
     expiredToken =
