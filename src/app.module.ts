@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Logger, Module, ValueProvider } from "@nestjs/common";
 import { AuthModule } from "./auth/auth.module.js";
 import { ConfigModule, ConfigService } from "@nestjs/config";

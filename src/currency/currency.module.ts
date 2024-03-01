@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Module } from "@nestjs/common";
 import { CurrencyService } from "./currency.service.js";
 import { CurrencyController } from "./currency.controller.js";

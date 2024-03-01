@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Module } from "@nestjs/common";
 import { WalletService } from "./wallet.service.js";
 import { WalletController } from "./wallet.controller.js";
