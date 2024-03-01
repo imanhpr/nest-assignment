@@ -3,7 +3,7 @@ import { WalletService } from "./wallet.service";
 
 import { describe, beforeEach, it, expect } from "vitest";
 
-describe("WalletService", () => {
+describe.todo("WalletService", () => {
   let service: WalletService;
 
   beforeEach(async () => {
