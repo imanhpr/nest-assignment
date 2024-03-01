@@ -20,5 +20,6 @@ FROM base AS release
 WORKDIR /app
 COPY --from=build /build/dist /app/dist
 COPY --from=prod-dep /build/node_modules /app/node_modules
+COPY --from=build /build/package.json /app/package.json
 
-ENTRYPOINT ["node","--experimental-detect-module","--trace-exit","--trace-sigint" , "--trace-uncaught", "--trace-warnings" , "dist/main.js"]
+CMD ["node","--experimental-detect-module","--trace-exit","--trace-sigint" , "--trace-uncaught", "--trace-warnings" , "dist/main.js"]
