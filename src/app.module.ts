@@ -5,6 +5,7 @@ import { MikroOrmModule } from "@mikro-orm/nestjs";
 import { PostgreSqlDriver } from "@mikro-orm/postgresql";
 import { IEnvironmentVariables } from "./types/index.js";
 import { WalletModule } from "./wallet/wallet.module.js";
+import { CurrencyModule } from "./currency/currency.module.js";
 
 const MikroOrmQueryLogger: ValueProvider = {
   provide: "MikroOrmQueryLogger",
@@ -14,6 +15,7 @@ const MikroOrmQueryLogger: ValueProvider = {
   imports: [
     AuthModule,
     WalletModule,
+    CurrencyModule,
     ConfigModule.forRoot({ cache: true, isGlobal: true }),
     MikroOrmModule.forRootAsync({
       providers: [MikroOrmQueryLogger],
