@@ -10,6 +10,12 @@ import { Decimal } from "decimal.js";
 @UseGuards(AuthGuard)
 export class WalletController {
   constructor(private readonly walletService: WalletService) {}
+
+  @Get("list")
+  transactionList(@GetUser() user: Omit<User, "password">) {
+    return this.walletService.transactionList(user.id);
+  }
+
   @Get()
   walletInfo(@GetUser() user: Omit<User, "password">) {
     return this.walletService.transactionList(user.id);
