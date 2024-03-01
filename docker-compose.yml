@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  pgdb:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: nest-db-user
+      POSTGRES_PASSWORD: secret_pass
+      POSTGRES_DB: nest-db
+
+  nest-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-api
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - pgdb
+    environment:
+      DB_PASSWORD: secret_pass
+      DB_USERNAME: nest-db-user
+      DB_NAME: nest-db
+      DB_HOST: pgdb
+      JWT_SECRET_KEY: VERY_SECRET_KEY
