@@ -17,5 +17,5 @@ export default class Currency {
     columnType: "NUMERIC(16,2)",
     type: () => Decimal,
   })
-  value!: Decimal;
+  value!: string | Decimal;
 }
