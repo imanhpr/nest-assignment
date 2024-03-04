@@ -1,6 +1,24 @@
 # NestJS ![nestjs32x32](https://github.com/imanhpr/nest-assignment/assets/56130647/facef099-7c17-4d9c-ae36-84265b05e31a) Code Assignment
 This project is meant to be used as a code assignment which was given to me for a job interview.
 
+## Code Assignment Description
+Evaluation test project specifications:
+
+### Ground rules:
+- this solution must be done with Nest.Js.
+- this solution should not contain the use of ‘any’ type.
+- this solution should contain a clear ‘Readme.md’ which indicates how to install and run the solution.
+- stick to the modular architecture.
+- create unit tests as much as you think is required.
+- create API documentation in Swagger or Postman collection format.
+- create an open repository in your GitHub account and push everything there.
+
+### Specifications:
+Create a Restful API for three different areas:
+- User registration and login which should give the user AccessToken.
+- User Wallet which is of different currencies.
+- Currencies.
+
 
 ## How To Run The Project ?
 Try to install dependency with ```pnpm``` and then set these enviroment varibles.
