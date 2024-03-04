@@ -1,7 +1,18 @@
 # NestJS ![nestjs32x32](https://github.com/imanhpr/nest-assignment/assets/56130647/facef099-7c17-4d9c-ae36-84265b05e31a) Code Assignment
 This project is meant to be used as a code assignment which was given to me for a job interview.
 
+
 ## How To Run The Project ?
+Try to install dependency with ```pnpm``` and then set these enviroment varibles.
+```
+DB_PASSWORD=<postgres_db_password>
+DB_USERNAME=<postgres_db_username>
+DB_NAME=<database name>
+DB_HOST=<database host>
+JWT_SECRET_KEY=<set a secret key here>
+```
+
+### This Instruction doesn't work
 Please follow the below instructions.
 1. At first install ```docker``` on your system and then use
 2. Run this command ```docker compose up -d```
@@ -58,7 +69,7 @@ In the root of project there is ```hopp-http-collection.json``` file. import thi
 - It uses [decimal.js](https://mikemcl.github.io/decimal.js/) to have a high precision of numbers and to avoid [IEEE 754 floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) pitfalls when working with monetary system
 
 ## The Things We Can Improve
-- Useing [**DAO (Data Access Object) Pattern**](https://www.digitalocean.com/community/tutorials/dao-design-pattern) to eliminate depndecy between **ORM** And **Business Logics**
+- Useing [**DAO (Data Access Object) Pattern**](https://www.digitalocean.com/community/tutorials/dao-design-pattern) to eliminate dependency between **ORM** And **Business Logics**
 - Adding more integration and unit tests. One of the project modules doesn't have any tests at all.
   - Test Coverage :
     - UtilModule - 100% - ✅
